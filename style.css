@@ -1,0 +1,26 @@
+body
+{
+	font-family:Lucida Console;
+	background-color: #232323;
+}
+
+textarea
+{
+	background-color: #565656;
+}
+
+h1, p, table
+{
+	color: #AEAEAE;
+}
+
+button
+{
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	margin: 16px;
+	background-color: #565656;
+	outline-color: #565656;
+}
