@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+</head>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SpeedDial Chrome2Firefox</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -15,11 +20,9 @@
 <table>
 	<th>Input</th>
 	<th>Output</th>
-	<th>Log</th>
 	<tr>
 		<td><textarea id="input" rows="58" cols="72"></textarea></td>
 		<td><textarea id="output" rows="58" cols="72" readonly=true></textarea></td>
-		<td><textarea id="log" rows="58" cols="72" readonly=true></textarea></td>
 	</tr>
 </table> 
 
@@ -31,7 +34,6 @@ const firefox_footer = "altLeftClickAction=5\naltMiddleClickAction=3\naltRightCl
 const btn_convert = document.getElementById("btn_convert");
 const txt_input = document.getElementById("input");
 const txt_output = document.getElementById("output");
-const txt_log = document.getElementById("log");
 
 main();
 
@@ -43,7 +45,6 @@ function onClick()
 function convert()
 {
 	txt_log.innerHTML = ""
-	log("Starting conversion")
 
 	btn_convert.disabled = true;
 
@@ -52,11 +53,7 @@ function convert()
 	const num_columns = parsed.settings["options.columns"];
 	const num_rows = parsed.settings["options.columns"];
 
-	log("num_columns " + num_columns)
-	log("num_rows " + num_rows)
-
 	const num_groups = Object.keys(parsed.groups).length;
-	log("num_groups " + num_groups)
 
 	var i;
 	var j;
@@ -87,12 +84,9 @@ function convert()
 
 		groups.push(group);
 	}
-	console.log(groups)
 
 	for (i = 0; i < groups.length; i++)
 	{
-		console.log(groups[i])
-
 		txt_output.innerHTML += "group-" + (i + 1) + "-columns=" + num_columns + "\n"
 		txt_output.innerHTML += "group-" + (i + 1) + "-rows=" + num_rows + "\n"
 		txt_output.innerHTML += "group-" + (i + 1) + "-title=" + groups[i].title + "\n"
@@ -101,7 +95,6 @@ function convert()
 	
 	// dials
 	const num_dials = Object.keys(parsed.dials).length;
-	log("num_dials " + num_dials)
 
 	var dial;
 	var group_index;
@@ -122,8 +115,6 @@ function convert()
 		groups[group_index].dials.push(dial);
 	}
 	
-	console.log(groups);
-
 	var dial_id;
 
 	// print dials
@@ -154,22 +145,15 @@ function convert()
 
 function get_group_index(groups, id_lookup)
 {
-	// log("looking for id " + id_lookup)
 	for (var i = 0; i < groups.length; i++)
 	{
 		if (groups[i].id == id_lookup) return i;
 	}
-	// log(id_lookup + "'s group not found")
 }
 
 function main()
 {
 	btn_convert.disabled = false;
-}
-
-function log(a)
-{
-	txt_log.innerHTML += a + "\n";
 }
 
 </script>
