@@ -14,13 +14,26 @@ h1, p, table
 	color: #AEAEAE;
 }
 
-button
-{
-	padding-left: 8px;
-	padding-right: 8px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	margin: 16px;
-	background-color: #565656;
-	outline-color: #565656;
+.convertButton {
+	-moz-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.convertButton:hover {
+	background-color:#b34332;
+}
+.convertButton:active {
+	position:relative;
+	top:1px;
 }
